@@ -1,7 +1,13 @@
-const ola = require("../index")
+const { expect } = require('chai');
+const fs = require('fs');
+const sinon = require('sinon');
+const { getAllTalkers } = require("../talker");
+const allTalkersMock = require('./mock/talkesMock');
 
-describe("teste", () => {
-  it("teste", () => {
-    expect(ola).to.be.deep.equal({status:200, json:"olá"});
+sinon.stub(fs,"readFileSync").returns(allTalkersMock)
+describe("teste o endPoint getAllTalkers", () => {
+  it("em caso de suscesso", async () => {
+    const atual = await getAllTalkers()
+    expect(atual).to.be.deep.equals(allTalkersMock);
   })
 })
