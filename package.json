@@ -19,6 +19,7 @@
     "sinon": "^14.0.0"
   },
   "dependencies": {
+    "chai-as-promised": "^7.1.1",
     "express": "^4.18.1",
     "fs": "^0.0.1-security"
   }
