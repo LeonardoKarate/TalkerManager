@@ -26,8 +26,16 @@ const createTalker = async (talker) => {
   return result;
 };
 
+const atualizaTalker = async (id, talker) => {
+  const talkerList = await getAllTalkers();
+  const result = talkerList.filter((t) => t.id !== parseInt(id, 10));
+  await fs.writeFile('src/talkers.json', JSON.stringify([...result, { ...talker, id }]));
+  return { ...talker, id };
+};
+
 module.exports = {
   getAllTalkers,
   getOneTalker,
   createTalker,
+  atualizaTalker,
 };
