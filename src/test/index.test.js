@@ -3,7 +3,9 @@ const chai = require('chai');
 const { expect } = chai;
 const fs = require('fs');
 const sinon = require('sinon');
-const { getAllTalkers, getOneTalker, createTalker } = require('../talker');
+const {
+  getAllTalkers, getOneTalker, createTalker, atualizaTalker,
+} = require('../talker');
 const { talkerVerify, nomeObrigatorio } = require('../middleware/talker');
 const allTalkersMock = require('./mock/talkesMock');
 
@@ -47,5 +49,14 @@ describe('teste o endPoint postTalker', () => {
     await talkerVerify(request, response, next);
     expect(response.status.calledWith(400)).to.be.equal(true);
     expect(response.json.calledWith(nomeObrigatorio)).to.be.equal(true);
+  });
+});
+
+describe('testa o endPoint put /talker', async () => {
+  it('em caso de suscesso', async () => {
+    const { id, ...talker } = { ...allTalkersMock[0] };
+    talker.age = 18;
+    const atual = await atualizaTalker(id, talker);
+    expect(atual).to.be.deep.equal({ ...talker, id });
   });
 });

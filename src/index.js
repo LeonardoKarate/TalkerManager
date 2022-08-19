@@ -34,6 +34,17 @@ app.post('/talker', talkerVerify, async (req, res, next) => {
   }
 });
 
+app.put('/talker/:id', idValidate, talkerVerify, async (req, res, next) => {
+  try {
+    const { id } = req.params;
+    const talker = req.body;
+    const result = await Talker.atualizaTalker(id, talker);
+    return res.status(200).json(result);
+  } catch (err) {
+    return next(err);
+  }
+});
+
 app.listen(3000, () => {
   console.log('aplicação rodando na porta 3000');
 });
