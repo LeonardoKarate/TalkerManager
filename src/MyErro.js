@@ -1,9 +1,10 @@
 class MyErro extends Error {
-  status = "";
+  status = '';
+
   constructor(status, message) {
-    super();
+    super(message);
     this.status = status;
   }
-};
+}
 
 module.exports = MyErro;
