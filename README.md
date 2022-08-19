@@ -1,5 +1,5 @@
 # TalkerManager
-projeto para apricar os conhecimento de node adiquirido durante o curso da Trybe.
+projeto para aplicar os conhecimento de node adiquirido durante o curso da Trybe.
 
 esse projeto posibilita leitura de arquivo e retornos de todos os palestrando pelo endpoint get /talker,
 leitura de um palestrante especifico pelo endpoint get /talker/id,
